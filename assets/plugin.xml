@@ -1,0 +1,26 @@
+<idea-plugin>
+    <id>com.my-company</id>
+    <name>Custom PhpStorm plugin</name>
+    <version>1.0</version>
+    <change-notes>Inital version</change-notes>
+    <vendor email="foo@mail.com" url="https://www.my-company.com">My Company</vendor>
+
+    <description><![CDATA[
+        Custom PhpStorm plugin
+      ]]></description>
+
+    <!-- http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html -->
+    <idea-version since-build="107.105"/>
+
+    <!-- http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
+    <depends>com.jetbrains.php</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.jetbrains.php">
+        <typeProvider3 implementation="foo.bar.BazProvider"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+    </extensions>
+</idea-plugin>

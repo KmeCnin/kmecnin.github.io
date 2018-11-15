@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.3.12'
+}
+
+group 'com.my-company'
+description 'Custom PhpStorm plugin'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' }
+
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+apply plugin: 'java'
+apply plugin: 'org.jetbrains.intellij'
+
+intellij {
+    pluginName 'mention-phpstorm-plugin'
+    localPath '/home/user/.local/share/JetBrains/Toolbox/apps/PhpStorm/ch-0/182.4892.16'
+    plugins = [
+        'com.jetbrains.php:182.4892.16'
+    ]
+}
+
+patchPluginXml {
+    changeNotes """
+      Inital version"""
+}

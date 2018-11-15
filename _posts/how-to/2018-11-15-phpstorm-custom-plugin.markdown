@@ -7,9 +7,15 @@ published: true
 ---
 
 ## Resources
+
+### Websites
 - [PhpStorm Plugin Development](https://www.jetbrains.org/intellij/sdk/docs/phpstorm/phpstorm.html)
 - [Getting Started with Gradle](https://www.jetbrains.org/intellij/sdk/docs/tutorials/build_system/prerequisites.html)
 - [Gradle Intellij Plugin Documentation](https://github.com/JetBrains/gradle-intellij-plugin)
+
+### Working example files
+- [./build.gradle](/assets/build.gradle)
+- [./src/main/resources/META-INF/plugin.xml](/assets/plugin.xml)
 
 ## Setup IDE
 
@@ -61,10 +67,8 @@ If everything is well setup, you should be able to run `Gradle > Tasks > intelli
 ### Test your plugin using PhpStorm
 Default behavior of Gradle when you do `Gradle > Tasks > intellij > runIde` in order to test your plugin, is to launch another instance of IntelliJ.  
 
-In order to launch PhpStorm instead, you have to add this task in your `build.gradle`:
+In order to launch PhpStorm instead, you have to add this line under `build.gradle`, `intellij { ... }`:
 ```
-task runPhpStorm(type: org.jetbrains.intellij.tasks.RunIdeTask) {
-    ideaDirectory '/absolute/path/to/your/PhpStorm/installation'
-}
+localPath '/absolute/path/to/your/PhpStorm/installation'
 ```
-Then you are able to test your plugin with PhpStorm using `Gradle > Tasks > intellij > runPhpStorm`.
+Then you are able to test your plugin with PhpStorm using `Gradle > Tasks > intellij > runIde`.
