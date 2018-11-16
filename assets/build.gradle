@@ -1,36 +1,39 @@
+buildscript {
+    repositories {
+        mavenCentral()
+
+        maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' }
+    }
+}
+
 plugins {
-    id 'java'
-    id 'org.jetbrains.intellij' version '0.3.12'
+    id "org.jetbrains.intellij" version "0.3.11"
 }
 
-group 'com.my-company'
-description 'Custom PhpStorm plugin'
-version '1.0'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-    maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' }
-
-}
-
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}
-
-apply plugin: 'java'
+apply plugin: 'idea'
 apply plugin: 'org.jetbrains.intellij'
+apply plugin: 'java'
 
 intellij {
-    pluginName 'mention-phpstorm-plugin'
-    localPath '/home/user/.local/share/JetBrains/Toolbox/apps/PhpStorm/ch-0/182.4892.16'
+    version 'IU-2018.2'
+    updateSinceUntilBuild false
     plugins = [
-        'com.jetbrains.php:182.4892.16'
+            "com.jetbrains.php:182.3684.42",
+            "com.jetbrains.twig:182.3458.35",
+            "de.espend.idea.php.annotation:5.3",
+            "de.espend.idea.php.toolbox:0.4.6",
+            'coverage',
+            'webDeployment',
+            'yaml',
+            'CSS',
+            'java-i18n',
+            'properties'
     ]
+    pluginName 'mention-phpstorm-plugin'
 }
 
-patchPluginXml {
-    changeNotes """
-      Inital version"""
+group 'my.company'
+
+wrapper {
+    gradleVersion '4.3.1'
 }

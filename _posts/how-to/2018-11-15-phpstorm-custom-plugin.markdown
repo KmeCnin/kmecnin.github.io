@@ -20,7 +20,10 @@ published: true
 ## Setup IDE
 
 ### Download
-To be able to create IntelliJ (included PhpStorm) plugins you first need to download [IntelliJ IDEA Community edition](https://www.jetbrains.com/idea/download/#section=linux).
+To be able to create IntelliJ (included PhpStorm) plugins you first need to download [IntelliJ IDEA Ultimate edition](https://www.jetbrains.com/idea/download/#section=linux).  
+
+This version is not free but you can go for a 3 months free trial.  
+**To note:** It is said that the *Community version* that is free should work for creating PhpStorm plugins but it seems it does not because it does not provide the mandatory PHP plugins.
 
 ### First configuration
 At the first launch of IntelliJ IDEA, you will be asked what default plugins you want to use.  
@@ -50,7 +53,7 @@ In `build.gradle` add the following:
 ```
 intellij {
     version '2018.2.6'
-    plugins = ['coverage', 'com.jetbrains.php:182.4892.16']
+    plugins = ['com.jetbrains.php:182.4892.16']
 }
 ```
 Look for a version of the plugin that match your IDE requirements: [List of releases](https://plugins.jetbrains.com/plugin/6610-php).
@@ -64,11 +67,7 @@ Then require the PHP library in your `src/main/resources/META-INF/plugin.xml` by
 ### Test your configuration
 If everything is well setup, you should be able to run `Gradle > Tasks > intellij > verifyPlugin` in the Gradle window (tab at the very right of IDE window).
 
-### Test your plugin using PhpStorm
-Default behavior of Gradle when you do `Gradle > Tasks > intellij > runIde` in order to test your plugin, is to launch another instance of IntelliJ.  
+### Test your plugin
+Default behavior of Gradle when you do `Gradle > Tasks > intellij > runIde` in order to test your plugin, is to launch another instance of IntelliJ.
 
-In order to launch PhpStorm instead, you have to add this line under `build.gradle`, `intellij { ... }`:
-```
-localPath '/absolute/path/to/your/PhpStorm/installation'
-```
-Then you are able to test your plugin with PhpStorm using `Gradle > Tasks > intellij > runIde`.
+**To note:** In order to configure your `build.gradle` file, the easiest thing is to follow exemple of [Symfony Plugin](https://github.com/Haehnchen/idea-php-symfony2-plugin/blob/master/build.gradle${annotationPluginVersion}).
